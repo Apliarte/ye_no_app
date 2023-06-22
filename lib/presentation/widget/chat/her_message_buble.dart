@@ -22,17 +22,28 @@ class HerMessageBubble extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5),
-        const _ImageBubble(),
+        _ImageBubble(),
+        SizedBox(
+          height: 10,
+        )
         // Todo: imagen
       ],
     );
   }
 }
-class _ImageBubble extends StatelessWidget {
-  const _ImageBubble({super.key});
 
+class _ImageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final size = MediaQuery.of(context);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.network(
+
+          'https://yesno.wtf/assets/yes/10-271c872c91cd72c1e38e72d2f8eda676.gif',
+          
+          height: 150,
+          fit: BoxFit.cover,),
+    );
   }
 }
