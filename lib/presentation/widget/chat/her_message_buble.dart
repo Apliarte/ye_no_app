@@ -21,9 +21,18 @@ class HerMessageBubble extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 5)
+        const SizedBox(height: 5),
+        const _ImageBubble(),
         // Todo: imagen
       ],
     );
+  }
+}
+class _ImageBubble extends StatelessWidget {
+  const _ImageBubble({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
