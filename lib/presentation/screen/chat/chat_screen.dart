@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ye_no_app/domain/entities/message.dart';
@@ -40,6 +42,7 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
+                  controller: chatProvider.chatScrollController,
                     itemCount: chatProvider.messageList.length,
                     itemBuilder: (context, index) {
                       final message = chatProvider.messageList[index];
@@ -48,8 +51,10 @@ class _ChatView extends StatelessWidget {
                           ? HerMessageBubble(message: message)
                           : MyMessageBubble(message: message);
                     })),
-            //caja mensage
-            const MessageFieldBox()
+            MessageFieldBox(
+              //onValue: (value) => chatProvider.sendMessage(value),
+              onValue: chatProvider.sendMessage,// esta y la anterior son validas
+            )
           ],
         ),
       ),
