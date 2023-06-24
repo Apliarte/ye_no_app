@@ -1,5 +1,3 @@
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ye_no_app/domain/entities/message.dart';
@@ -15,14 +13,17 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.engineering))
+        ],
         leading: const Padding(
           padding: EdgeInsets.all(4.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                'https://images.hola.com/imagenes/actualidad/20190211137198/brad-pitt-cumple-jennifer-aniston/0-646-408/aniston-getty1-t.jpg?tx=w_680'),
+                'https://cdn.leonardo.ai/users/1a486cd0-ecce-4ee8-b9e1-216770d94488/generations/3568d829-e620-44b9-afcb-c0a9e1f3e46f/DreamShaper_v5_enigma_0.jpg'),
           ),
         ),
-        title: const Text('Mi Amor ❤'),
+        title: Text('Pregunta lo que quieras', style: TextStyle(fontSize: 16)),
         centerTitle: false,
       ),
       body: _ChatView(),
@@ -42,7 +43,7 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
-                  controller: chatProvider.chatScrollController,
+                    controller: chatProvider.chatScrollController,
                     itemCount: chatProvider.messageList.length,
                     itemBuilder: (context, index) {
                       final message = chatProvider.messageList[index];
@@ -53,7 +54,8 @@ class _ChatView extends StatelessWidget {
                     })),
             MessageFieldBox(
               //onValue: (value) => chatProvider.sendMessage(value),
-              onValue: chatProvider.sendMessage,// esta y la anterior son validas
+              onValue:
+                  chatProvider.sendMessage, // esta y la anterior son validas
             )
           ],
         ),
